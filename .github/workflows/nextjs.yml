@@ -29,12 +29,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          npm install next@15.4.6
 
       - name: Build
         run: |
-          next build
-          next export
+          npm run build
+          npm run export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
