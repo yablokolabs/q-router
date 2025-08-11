@@ -20,26 +20,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: pm
-        run: |
-          if [ -f yarn.lock ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "install=install --frozen-lockfile" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-          else
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "install=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          fi
-
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: ${{ steps.pm.outputs.manager }}
+          cache: 'npm'
 
-      - name: Install deps
-        run: ${{ steps.pm.outputs.manager }} ${{ steps.pm.outputs.install }}
+      - name: Install dependencies
+        run: npm ci --yes
+
+      - name: Install Next.js globally
+        run: npm install -g next@15.4.6
 
       - name: Configure Pages for Next.js
         uses: actions/configure-pages@v5
@@ -56,8 +47,8 @@ jobs:
 
       - name: Build & Export
         run: |
-          ${{ steps.pm.outputs.runner }} next build
-          ${{ steps.pm.outputs.runner }} next export
+          next build
+          next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
