@@ -53,6 +53,68 @@ const features = [
   }
 ]
 
+const testimonials = [
+  {
+    quote: "Q-Router transformed our delivery operations. We've seen a 25% reduction in fuel costs and our customers are happier than ever.",
+    author: "Sarah Johnson",
+    role: "VP of Operations",
+    company: "LogiCorp"
+  },
+  {
+    quote: "The quantum optimization is incredible. What used to take hours of planning now happens in seconds.",
+    author: "Michael Chen",
+    role: "Fleet Manager",
+    company: "FastTrack Delivery"
+  },
+  {
+    quote: "Integration was seamless and the ROI was immediate. Q-Router is a game-changer for logistics.",
+    author: "Emily Rodriguez",
+    role: "CTO",
+    company: "Supply Chain Solutions"
+  }
+]
+
+const plans = [
+  {
+    title: 'Starter',
+    price: '$99',
+    buttonText: 'Start Free Trial',
+    features: [
+      'Up to 100 deliveries/month',
+      'Basic route optimization',
+      'Email support',
+      'API access',
+      'Standard integrations'
+    ]
+  },
+  {
+    title: 'Growth',
+    price: '$299',
+    buttonText: 'Start Free Trial',
+    features: [
+      'Up to 1,000 deliveries/month',
+      'Quantum optimization',
+      'Real-time tracking',
+      'Priority support',
+      'Advanced analytics',
+      'Custom integrations'
+    ]
+  },
+  {
+    title: 'Enterprise',
+    price: 'Custom',
+    buttonText: 'Contact Sales',
+    features: [
+      'Unlimited deliveries',
+      'Full quantum suite',
+      'Dedicated support',
+      'Custom development',
+      'SLA guarantees',
+      'White-label options'
+    ]
+  }
+]
+
 export default function Home() {
   const [form] = Form.useForm()
 
@@ -584,3 +646,4 @@ export default function Home() {
       </Footer>
     </Layout>
   )
+}
