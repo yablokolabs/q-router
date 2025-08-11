@@ -15,24 +15,30 @@ import {
   Layout,
   Typography,
   Space,
-  Divider
+  Divider,
+  message
 } from 'antd'
+import { useState } from 'react';
+import { generateQRouterPdf } from '@/utils/generatePdf';
+import BackToTop from '@/components/BackToTop';
 import { 
   RocketOutlined,
   ThunderboltOutlined,
   ApiOutlined,
   DashboardOutlined,
-  ClockCircleOutlined,
+  CheckCircleOutlined,
+  LineChartOutlined,
   DollarOutlined,
-  DownloadOutlined,
+  ClockCircleOutlined,
   SendOutlined,
-  CheckCircleOutlined
-} from '@ant-design/icons'
+  DownloadOutlined
+} from '@ant-design/icons';
 import NetworkAnimation from '@/components/NetworkAnimation'
 import styles from './page.module.css'
 
-const { Header, Content, Footer } = Layout
-const { Title, Paragraph, Text } = Typography
+const { Header, Content, Footer } = Layout;
+const { Title, Paragraph, Text } = Typography;
+
 const { TextArea } = Input
 
 const features = [
@@ -139,68 +145,148 @@ export default function Home() {
 
   const onFinish = handleSubmit
   return (
-    <Layout style={{ background: 'transparent' }}>
-      <Content>
-        <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
-          <NetworkAnimation />
-          <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '0 24px' }}>
-            <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
-              <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-                <Title level={1} className={styles.heroTitle}>
-                  Q-Router™
-                </Title>
-                <Title level={2} style={{ 
-                  color: '#E5E7EB', 
-                  fontWeight: 300, 
-                  marginBottom: '32px',
-                  fontSize: 'clamp(1.5rem, 3vw, 2.5rem)'
-                }}>
-                  The Quantum Way to the Fastest Route
-                </Title>
-                <Paragraph style={{ 
-                  fontSize: '1.25rem', 
-                  color: '#9CA3AF', 
-                  marginBottom: '48px',
-                  maxWidth: '600px',
-                  margin: '0 auto 48px'
-                }}>
-                  Quantum-powered route optimization with AI traffic prediction for faster, more cost-efficient deliveries.
-                </Paragraph>
-                <Space size="large" wrap>
-                  <Button 
-                    type="primary" 
-                    size="large" 
-                    style={{ 
-                      height: '56px', 
-                      padding: '0 32px', 
-                      fontSize: '18px',
-                      fontWeight: 600
-                    }}
-                  >
-                    Book a Demo
-                  </Button>
-                  <Button 
-                    size="large" 
-                    icon={<DownloadOutlined />}
-                    style={{ 
-                      height: '56px', 
-                      padding: '0 32px', 
-                      fontSize: '18px',
-                      background: 'transparent',
-                      borderColor: '#5EF1FF',
-                      color: '#5EF1FF'
-                    }}
-                  >
-                    Download One-Pager
-                  </Button>
-                </Space>
-              </Col>
-            </Row>
-          </div>
-        </section>
+    <>
+      <BackToTop />
+      <Layout style={{ background: 'transparent' }}>
+        <Content>
+          <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+            <NetworkAnimation />
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '0 24px' }}>
+              <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
+                <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
+                    <Title level={1} className={styles.heroTitle}>
+                      Q-Router™
+                    </Title>
+                    <Title level={2} style={{ 
+                      color: '#E5E7EB', 
+                      fontWeight: 300, 
+                      marginBottom: '16px',
+                      fontSize: 'clamp(1.5rem, 3vw, 2.5rem)'
+                    }}>
+                      The Quantum Way to the Fastest Route
+                    </Title>
+                    <Paragraph style={{ 
+                      fontSize: '1.25rem', 
+                      color: '#9CA3AF', 
+                      marginBottom: '24px',
+                      maxWidth: '600px',
+                      margin: '0 auto 32px'
+                    }}>
+                      Quantum-powered route optimization with AI traffic prediction for faster, more cost-efficient deliveries.
+                    </Paragraph>
+                    <Space size="large" wrap>
+                      <Button 
+                        type="primary" 
+                        size="large" 
+                        onClick={() => {
+                          document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        style={{ 
+                          height: '56px', 
+                          padding: '0 32px', 
+                          fontSize: '18px',
+                          fontWeight: 600
+                        }}
+                      >
+                        Book a Demo
+                      </Button>
+                      <Button 
+                        size="large" 
+                        icon={<DownloadOutlined />}
+                        onClick={async () => {
+                          try {
+                            await generateQRouterPdf();
+                            message.success('Downloading Q-Router One-Pager');
+                          } catch (error) {
+                            console.error('Error generating PDF:', error);
+                            message.error('Failed to generate PDF');
+                          }
+                        }}
+                        style={{ 
+                          height: '56px', 
+                          padding: '0 32px', 
+                          fontSize: '18px',
+                          background: 'transparent',
+                          borderColor: '#5EF1FF',
+                          color: '#5EF1FF',
+                          ':hover': {
+                            borderColor: '#5EF1FF',
+                            color: '#5EF1FF',
+                            opacity: 0.8
+                          }
+                        }}
+                      >
+                        Download One-Pager
+                      </Button>
+                    </Space>
+                  </Col>
+                </Row>
+              </div>
+            </section>
+
+            {/* Problem & Solution */}
+            <section style={{ padding: '48px 24px' }}>
+              <Row gutter={[48, 48]} justify="center">
+                <Col xs={24} lg={10}>
+                  <Card className="quantum-card" style={{ height: '100%' }}>
+                    <Title level={3} style={{ color: '#FF6B6B', marginBottom: '24px' }}>
+                      The Problem
+                    </Title>
+                    <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
+                      Traditional routing systems are inefficient, leading to:
+                    </Paragraph>
+                    <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
+                      <li>30% longer delivery times</li>
+                      <li>25% higher fuel costs</li>
+                      <li>Poor customer satisfaction</li>
+                      <li>Manual planning bottlenecks</li>
+                      <li>Inability to adapt to real-time changes</li>
+                    </ul>
+                  </Card>
+                </Col>
+                <Col xs={24} lg={10}>
+                  <Card className="quantum-card" style={{ height: '100%' }}>
+                    <Title level={3} style={{ color: '#5EF1FF', marginBottom: '24px' }}>
+                      The Solution
+                    </Title>
+                    <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
+                      Q-Router combines quantum computing with AI to deliver:
+                    </Paragraph>
+                    <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
+                      <li>Exponentially faster optimization</li>
+                      <li>Real-time traffic prediction</li>
+                      <li>Dynamic route adjustments</li>
+                      <li>Multi-constraint optimization</li>
+                      <li>Seamless API integration</li>
+                    </ul>
+                  </Card>
+                </Col>
+              </Row>
+            </section>
+
+            {/* Features Grid */}
+            <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
+              <Row gutter={[32, 32]} justify="center">
+                {features.map((feature, index) => (
+                  <Col key={index} xs={24} md={12} lg={8}>
+                    <Card className="quantum-card" style={{ height: '100%' }}>
+                      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                        {feature.icon}
+                      </div>
+                      <Title level={3} style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+                        {feature.title}
+                      </Title>
+                      <Paragraph style={{ color: '#9CA3AF', textAlign: 'center' }}>
+                        {feature.description}
+                      </Paragraph>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </section>
 
         {/* Problem & Solution */}
-        <section style={{ padding: '120px 24px' }}>
+        <section style={{ padding: '48px 24px' }}>
           <Row gutter={[48, 48]} justify="center">
             <Col xs={24} lg={10}>
               <Card className="quantum-card" style={{ height: '100%' }}>
@@ -240,8 +326,8 @@ export default function Home() {
         </section>
 
         {/* Features Grid */}
-        <section style={{ padding: '120px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
+        <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
+          <Row justify="center" style={{ marginBottom: '48px' }}>
             <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
               <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
                 Quantum-Powered Features
@@ -270,231 +356,195 @@ export default function Home() {
           </Row>
         </section>
 
-        {/* Impact Metrics */}
-        <section style={{ padding: '120px 24px' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
+        {/* Pricing Pitch */}
+        <section style={{ padding: '48px 24px' }}>
+          <Row justify="center" style={{ marginBottom: '40px' }}>
             <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                Proven Results
+              <Title level={2} style={{ color: '#5EF1FF', marginBottom: '24px' }}>
+                No Savings, No Fee
               </Title>
-              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Real impact from our quantum-powered optimization
+              <Title level={3} style={{ color: '#E5E7EB', fontWeight: 400, marginBottom: '32px' }}>
+                Pay Only for Results
+              </Title>
+              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF', maxWidth: '800px', margin: '0 auto 32px' }}>
+                Q-Router's performance-based pricing means you only pay when we deliver real, measurable savings to your bottom line.
               </Paragraph>
+              <Button 
+                type="primary" 
+                size="large" 
+                onClick={() => {
+                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{ 
+                  height: '56px', 
+                  padding: '0 48px', 
+                  fontSize: '18px',
+                  marginBottom: '40px',
+                  background: 'linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%)',
+                  border: 'none'
+                }}
+              >
+                Start Your Risk-Free Trial
+              </Button>
             </Col>
           </Row>
           <Row gutter={[48, 48]} justify="center">
-            <Col xs={12} lg={6}>
-              <Card className="quantum-card" style={{ textAlign: 'center' }}>
-                <Statistic
-                  title="Faster Deliveries"
-                  value={18}
-                  suffix="%"
-                  valueStyle={{ color: '#5EF1FF', fontSize: '3rem' }}
-                />
+            <Col xs={24} md={8}>
+              <Card className="quantum-card" style={{ height: '100%' }}>
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <DollarOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF' }} />
+                </div>
+                <Title level={4} style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+                  Performance-Based Pricing
+                </Title>
+                <Paragraph style={{ color: '#9CA3AF' }}>
+                  Pay only 10% of the actual cost savings we generate for your business. No savings = No fee.
+                </Paragraph>
               </Card>
             </Col>
-            <Col xs={12} lg={6}>
-              <Card className="quantum-card" style={{ textAlign: 'center' }}>
-                <Statistic
-                  title="Cost Savings"
-                  value={25}
-                  suffix="%"
-                  valueStyle={{ color: '#5EF1FF', fontSize: '3rem' }}
-                />
+            <Col xs={24} md={8}>
+              <Card className="quantum-card" style={{ height: '100%' }}>
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <ThunderboltOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF' }} />
+                </div>
+                <Title level={4} style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+                  Quantum + AI Optimization
+                </Title>
+                <Paragraph style={{ color: '#9CA3AF' }}>
+                  Our advanced algorithms combine quantum computing and AI traffic prediction to find the most efficient routes.
+                </Paragraph>
               </Card>
             </Col>
-            <Col xs={12} lg={6}>
-              <Card className="quantum-card" style={{ textAlign: 'center' }}>
-                <Statistic
-                  title="Planning Time Reduced"
-                  value={90}
-                  suffix="%"
-                  valueStyle={{ color: '#5EF1FF', fontSize: '3rem' }}
-                />
-              </Card>
-            </Col>
-            <Col xs={12} lg={6}>
-              <Card className="quantum-card" style={{ textAlign: 'center' }}>
-                <Statistic
-                  title="Customer Satisfaction"
-                  value={95}
-                  suffix="%"
-                  valueStyle={{ color: '#5EF1FF', fontSize: '3rem' }}
-                />
+            <Col xs={24} md={8}>
+              <Card className="quantum-card" style={{ height: '100%' }}>
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <CheckCircleOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF' }} />
+                </div>
+                <Title level={4} style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+                  Measurable Results
+                </Title>
+                <Paragraph style={{ color: '#9CA3AF' }}>
+                  Clear, transparent reporting shows exactly how much you're saving with Q-Router's optimization.
+                </Paragraph>
               </Card>
             </Col>
           </Row>
         </section>
 
-        {/* How It Works */}
-        <section style={{ padding: '120px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
-            <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                How It Works
-              </Title>
-              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Three simple steps to quantum-optimized routing
-              </Paragraph>
-            </Col>
-          </Row>
+        {/* Savings Calculation */}
+        <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
           <Row justify="center">
             <Col xs={24} lg={16}>
-              <Steps
-                direction="vertical"
-                size="large"
-                current={-1}
-                items={[
-                  {
-                    title: 'Ingest',
-                    description: 'Import your delivery data, constraints, and preferences through our API or dashboard',
-                    icon: <ApiOutlined />
-                  },
-                  {
-                    title: 'Optimize',
-                    description: 'Our quantum algorithms process millions of route combinations in seconds',
-                    icon: <ThunderboltOutlined />
-                  },
-                  {
-                    title: 'Orchestrate',
-                    description: 'Deploy optimized routes with real-time monitoring and dynamic adjustments',
-                    icon: <DashboardOutlined />
-                  }
-                ]}
-              />
-            </Col>
-          </Row>
-        </section>
-
-        {/* Integrations */}
-        <section style={{ padding: '120px 24px' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
-            <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                Seamless Integrations
-              </Title>
-              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF', marginBottom: '48px' }}>
-                Connect with your existing logistics ecosystem
-              </Paragraph>
-              <Avatar.Group size="large" max={{ count: 8 }}>
-                <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>SAP</Avatar>
-                <Avatar style={{ backgroundColor: '#A855F7', color: '#fff' }}>SF</Avatar>
-                <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>WMS</Avatar>
-                <Avatar style={{ backgroundColor: '#A855F7', color: '#fff' }}>TMS</Avatar>
-                <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>ERP</Avatar>
-                <Avatar style={{ backgroundColor: '#A855F7', color: '#fff' }}>API</Avatar>
-                <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>GPS</Avatar>
-                <Avatar style={{ backgroundColor: '#A855F7', color: '#fff' }}>IoT</Avatar>
-              </Avatar.Group>
-            </Col>
-          </Row>
-        </section>
-
-        {/* Testimonials */}
-        <section style={{ padding: '120px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
-            <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                What Our Customers Say
-              </Title>
-            </Col>
-          </Row>
-          <Row justify="center">
-            <Col xs={24} lg={16}>
-              <Carousel autoplay dots={{ className: 'custom-dots' }}>
-                {testimonials.map((testimonial, index) => (
-                  <div key={index}>
-                    <Card className="quantum-card" style={{ textAlign: 'center', margin: '0 16px' }}>
-                      <Paragraph style={{ 
-                        fontSize: '18px', 
-                        color: '#E5E7EB', 
-                        fontStyle: 'italic',
-                        marginBottom: '32px',
-                        lineHeight: 1.6
-                      }}>
-                        "{testimonial.quote}"
-                      </Paragraph>
-                      <Title level={5} style={{ color: '#5EF1FF', marginBottom: '8px' }}>
-                        {testimonial.author}
-                      </Title>
-                      <Text style={{ color: '#9CA3AF' }}>
-                        {testimonial.role}, {testimonial.company}
-                      </Text>
-                    </Card>
-                  </div>
-                ))}
-              </Carousel>
-            </Col>
-          </Row>
-        </section>
-
-        {/* Pricing Teaser */}
-        <section style={{ padding: '120px 24px' }}>
-          <Row justify="center" style={{ marginBottom: '80px' }}>
-            <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                Choose Your Plan
-              </Title>
-              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Select the plan that best suits your business needs
-              </Paragraph>
-            </Col>
-          </Row>
-          <Row gutter={[32, 32]} justify="center">
-            {plans.map((plan, index) => (
-              <Col xs={24} lg={8} key={index}>
-                <Card 
-                  className="quantum-card" 
-                  style={{ 
-                    textAlign: 'center', 
-                    height: '100%',
-                    position: 'relative'
-                  }}
-                >
-                  {plan.title === 'Growth' && (
-                    <div style={{
-                      position: 'absolute', 
-                      top: '-12px', 
-                      left: '50%', 
-                      transform: 'translateX(-50%)',
-                      background: 'linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%)',
-                      color: '#000',
-                      padding: '4px 16px',
-                      borderRadius: '12px',
-                      fontSize: '12px',
-                      fontWeight: 600
+              <Card className="quantum-card">
+                <Title level={3} style={{ color: '#5EF1FF', textAlign: 'center', marginBottom: '32px' }}>
+                  Transparent Savings Calculation
+                </Title>
+                <div style={{ 
+                  background: 'rgba(255, 255, 255, 0.03)', 
+                  borderRadius: '8px', 
+                  padding: '32px',
+                  marginBottom: '16px'
+                }}>
+                  <div style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: '32px',
+                    color: '#E5E7EB'
+                  }}>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center'
                     }}>
-                      POPULAR
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Cost Savings</div>
+                      <div style={{ 
+                        fontSize: '2rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px'
+                      }}>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>=</span>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>B</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>−</span>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>O</sub></span>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
+                        Where: C<sub>S</sub> = Cost Savings, C<sub>B</sub> = Baseline Cost, C<sub>O</sub> = Optimized Cost
+                      </div>
                     </div>
-                  )}
-                  <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                    {plan.title}
-                  </Title>
-                  <Statistic
-                    value={plan.price === 'Custom' ? plan.price : plan.price}
-                    valueStyle={{ color: '#5EF1FF', fontSize: '2rem' }}
-                    suffix={plan.price !== 'Custom' ? '/month' : ''}
-                    style={{ marginBottom: '24px' }}
-                  />
-                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '32px', textAlign: 'left' }}>
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} style={{ marginBottom: '12px', color: '#9CA3AF' }}>
-                        <CheckCircleOutlined style={{ color: '#5EF1FF', marginRight: '8px' }} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button type="primary" size="large" block>
-                    {plan.buttonText}
-                  </Button>
-                </Card>
-              </Col>
-            ))}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Q-Router Fee (10%)</div>
+                      <div style={{ 
+                        fontSize: '2rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px'
+                      }}>
+                        <span style={{ fontSize: '1.5rem' }}>F</span>
+                        <span style={{ fontSize: '1.5rem' }}>=</span>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>×</span>
+                        <span style={{ fontSize: '1.5rem' }}>0.1</span>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
+                        Where: F = Q-Router Fee
+                      </div>
+                    </div>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Your ROI</div>
+                      <div style={{ 
+                        fontSize: '2rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px'
+                      }}>
+                        <span style={{ fontSize: '1.5rem' }}>ROI</span>
+                        <span style={{ fontSize: '1.5rem' }}>=</span>
+                        <span style={{ fontSize: '1.5rem' }}>(</span>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>÷</span>
+                        <span style={{ fontSize: '1.5rem' }}>F</span>
+                        <span style={{ fontSize: '1.5rem' }}>)</span>
+                        <span style={{ fontSize: '1.5rem' }}>×</span>
+                        <span style={{ fontSize: '1.5rem' }}>100</span>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
+                        Where: ROI is expressed as a percentage
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <Paragraph style={{ 
+                  textAlign: 'center', 
+                  fontSize: '16px', 
+                  color: '#5EF1FF',
+                  fontStyle: 'italic',
+                  marginBottom: 0
+                }}>
+                  We charge only if we save you money — your success drives our success.
+                </Paragraph>
+              </Card>
+            </Col>
           </Row>
         </section>
 
         {/* Lead Capture */}
-        <section style={{ padding: '120px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
+        <section id="contact-form" style={{ padding: '80px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
           <Row justify="center">
             <Col xs={24} lg={12}>
               <Card className="quantum-card">
@@ -504,7 +554,34 @@ export default function Home() {
                 <Form
                   form={form}
                   layout="vertical"
-                  onFinish={onFinish}
+                  action="https://formspree.io/f/myzplqly"
+                  method="POST"
+                  onFinish={async (values) => {
+                    try {
+                      const response = await fetch('https://formspree.io/f/myzplqly', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          name: values.name,
+                          email: values.email,
+                          company: values.company,
+                          volume: values.volume,
+                          _gotcha: '' // This is a honeypot field for spam prevention
+                        })
+                      });
+                      
+                      if (response.ok) {
+                        message.success('Thank you! We will be in touch soon.');
+                        form.resetFields();
+                      } else {
+                        throw new Error('Form submission failed');
+                      }
+                    } catch (error) {
+                      message.error('Something went wrong. Please try again.');
+                    }
+                  }}
                   size="large"
                 >
                   <Row gutter={16}>
@@ -555,7 +632,10 @@ export default function Home() {
                       </Form.Item>
                     </Col>
                   </Row>
-                  <Form.Item>
+                  <Form.Item name="_gotcha" style={{display: 'none'}} aria-hidden="true">
+                  <input type="text" name="_gotcha" tabIndex={-1} />
+                </Form.Item>
+                <Form.Item>
                     <Button 
                       type="primary" 
                       htmlType="submit" 
@@ -588,7 +668,7 @@ export default function Home() {
               The quantum way to the fastest route. Revolutionizing logistics with quantum-powered optimization.
             </Paragraph>
           </Col>
-          <Col xs={24} lg={4}>
+          {/* <Col xs={24} lg={4}>
             <Title level={5} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
               Product
             </Title>
@@ -598,19 +678,17 @@ export default function Home() {
               <a href="#" style={{ color: '#9CA3AF' }}>API Docs</a>
               <a href="#" style={{ color: '#9CA3AF' }}>Integrations</a>
             </div>
-          </Col>
+          </Col> */}
           <Col xs={24} lg={4}>
             <Title level={5} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
               Company
             </Title>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <a href="#" style={{ color: '#9CA3AF' }}>About</a>
-              <a href="#" style={{ color: '#9CA3AF' }}>Careers</a>
-              <a href="#" style={{ color: '#9CA3AF' }}>Contact</a>
-              <a href="#" style={{ color: '#9CA3AF' }}>Blog</a>
+              <a href="https://yablokolabs.com" style={{ color: '#9CA3AF' }}>About</a>
+              <a href="https://yablokolabs.com/#contact" style={{ color: '#9CA3AF' }}>Contact</a>
             </div>
           </Col>
-          <Col xs={24} lg={4}>
+          {/* <Col xs={24} lg={4}>
             <Title level={5} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
               Support
             </Title>
@@ -620,30 +698,27 @@ export default function Home() {
               <a href="#" style={{ color: '#9CA3AF' }}>Status</a>
               <a href="#" style={{ color: '#9CA3AF' }}>Security</a>
             </div>
-          </Col>
+          </Col> */}
         </Row>
         <Divider style={{ borderColor: 'rgba(94, 241, 255, 0.2)', margin: '32px 0 24px' }} />
-        <Row justify="space-between" align="middle">
+        <Row justify="center" align="middle">
           <Col>
-            <Text style={{ color: '#9CA3AF' }}>
-              © 2024 Q-Router™. All rights reserved.
-            </Text>
-          </Col>
-          <Col>
-            <Text style={{ color: '#9CA3AF' }}>
-              Powered by{' '}
+            <Text style={{ color: '#9CA3AF', textAlign: 'center' }}>
+              © 2025{' '}
               <a 
                 href="https://yablokolabs.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{ color: '#5EF1FF' }}
               >
-                Yabloko Labs
+                Yabloko Labs Pvt. Ltd.
               </a>
+              {' '}All rights reserved.
             </Text>
           </Col>
         </Row>
       </Footer>
-    </Layout>
-  )
+      </Layout>
+    </>
+  );
 }
