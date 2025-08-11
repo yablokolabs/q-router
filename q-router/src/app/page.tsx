@@ -75,6 +75,7 @@ export default function Home() {
     }
   }
 
+  const onFinish = handleSubmit
   return (
     <Layout style={{ background: 'transparent' }}>
       <Content>
@@ -84,7 +85,6 @@ export default function Home() {
             <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
               <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
                 <Title level={1} className={styles.heroTitle}>
-                }}>
                   Q-Router™
                 </Title>
                 <Title level={2} style={{ 
@@ -376,71 +376,58 @@ export default function Home() {
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
                 Select the plan that best suits your business needs
               </Paragraph>
-              <Row gutter={[16, 16]}>
-                {plans.map((plan, index) => (
-                  <Col key={index} xs={24} sm={12} lg={8}>
-                    <Card className="plan-card">
-                      <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                        {plan.title}
-                      </Title>
-                      <Statistic
-                        value={plan.price}
-                        valueStyle={{ color: '#5EF1FF', fontSize: '2rem' }}
-                        suffix="/month"
-                        style={{ marginBottom: '16px' }}
-                      />
-                      <ul style={{ listStyle: 'none', padding: 0, marginBottom: '24px' }}>
-                        {plan.features.map((feature, idx) => (
-                          <li key={idx} style={{ marginBottom: '8px', color: '#9CA3AF' }}>
-                            <CheckCircleOutlined style={{ color: '#5EF1FF', marginRight: '8px' }} />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <Button type="primary" size="large" style={{ backgroundColor: '#5EF1FF', borderColor: '#5EF1FF' }}>
-                        {plan.buttonText}
-                      </Button>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-                  position: 'absolute', 
-                  top: '-12px', 
-                  left: '50%', 
-                  transform: 'translateX(-50%)',
-                  background: 'linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%)',
-                  color: '#000',
-                  padding: '4px 16px',
-                  borderRadius: '12px',
-                  fontSize: '12px',
-                  fontWeight: 600
-                }}>
-                  POPULAR
-                </div>
-                <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                  Growth
-                </Title>
-                <Paragraph style={{ color: '#9CA3AF', marginBottom: '32px' }}>
-                  Ideal for growing logistics operations
-                </Paragraph>
-                <Button type="primary" size="large" block>
-                  Contact Us
-                </Button>
-              </Card>
             </Col>
-            <Col xs={24} lg={8}>
-              <Card className="quantum-card" style={{ textAlign: 'center', height: '100%' }}>
-                <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                  Enterprise
-                </Title>
-                <Paragraph style={{ color: '#9CA3AF', marginBottom: '32px' }}>
-                  Full-scale quantum optimization
-                </Paragraph>
-                <Button type="primary" size="large" block>
-                  Contact Us
-                </Button>
-              </Card>
-            </Col>
+          </Row>
+          <Row gutter={[32, 32]} justify="center">
+            {plans.map((plan, index) => (
+              <Col xs={24} lg={8} key={index}>
+                <Card 
+                  className="quantum-card" 
+                  style={{ 
+                    textAlign: 'center', 
+                    height: '100%',
+                    position: 'relative'
+                  }}
+                >
+                  {plan.title === 'Growth' && (
+                    <div style={{
+                      position: 'absolute', 
+                      top: '-12px', 
+                      left: '50%', 
+                      transform: 'translateX(-50%)',
+                      background: 'linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%)',
+                      color: '#000',
+                      padding: '4px 16px',
+                      borderRadius: '12px',
+                      fontSize: '12px',
+                      fontWeight: 600
+                    }}>
+                      POPULAR
+                    </div>
+                  )}
+                  <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
+                    {plan.title}
+                  </Title>
+                  <Statistic
+                    value={plan.price === 'Custom' ? plan.price : plan.price}
+                    valueStyle={{ color: '#5EF1FF', fontSize: '2rem' }}
+                    suffix={plan.price !== 'Custom' ? '/month' : ''}
+                    style={{ marginBottom: '24px' }}
+                  />
+                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '32px', textAlign: 'left' }}>
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} style={{ marginBottom: '12px', color: '#9CA3AF' }}>
+                        <CheckCircleOutlined style={{ color: '#5EF1FF', marginRight: '8px' }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button type="primary" size="large" block>
+                    {plan.buttonText}
+                  </Button>
+                </Card>
+              </Col>
+            ))}
           </Row>
         </section>
 
