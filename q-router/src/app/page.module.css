@@ -1,0 +1,32 @@
+.container {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(16,20,42,0.9) 100%);
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(45deg, rgba(94,153,255,0.2) 0%, rgba(255,102,153,0.2) 100%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content {
+  background: transparent;
+}

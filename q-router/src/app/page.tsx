@@ -25,18 +25,38 @@ import {
   ClockCircleOutlined,
   DollarOutlined,
   DownloadOutlined,
-  SendOutlined
+  SendOutlined,
+  CheckCircleOutlined
 } from '@ant-design/icons'
 import NetworkAnimation from '@/components/NetworkAnimation'
+import styles from './page.module.css'
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
 
+const features = [
+  {
+    title: 'Quantum-Assisted Optimization',
+    description: 'Leverage quantum computing principles for exponentially faster route calculations',
+    icon: <ThunderboltOutlined style={{ fontSize: '2rem', color: '#5EF1FF' }} />
+  },
+  {
+    title: 'Real-time Analytics',
+    description: 'Get instant insights into your routes and operations',
+    icon: <ApiOutlined style={{ fontSize: '2rem', color: '#5EF1FF' }} />
+  },
+  {
+    title: 'Enterprise Integration',
+    description: 'Seamlessly integrate with your existing systems',
+    icon: <DashboardOutlined style={{ fontSize: '2rem', color: '#5EF1FF' }} />
+  }
+]
+
 export default function Home() {
   const [form] = Form.useForm()
 
-  const onFinish = async (values: any) => {
+  const handleSubmit = async (values: any) => {
     try {
       const response = await fetch('/api/lead', {
         method: 'POST',
@@ -55,76 +75,15 @@ export default function Home() {
     }
   }
 
-  const features = [
-    {
-      title: 'Quantum-Assisted Optimization',
-      description: 'Leverage quantum computing principles for exponentially faster route calculations',
-      icon: <ThunderboltOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    },
-    {
-      title: 'AI Traffic Prediction',
-      description: 'Machine learning models predict traffic patterns with 95% accuracy',
-      icon: <RocketOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    },
-    {
-      title: 'Multi-Depot & Time Windows',
-      description: 'Handle complex logistics with multiple depots and delivery constraints',
-      icon: <ClockCircleOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    },
-    {
-      title: 'SLA & Cost Constraints',
-      description: 'Optimize for service level agreements while minimizing operational costs',
-      icon: <DollarOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    },
-    {
-      title: 'API & Dashboard',
-      description: 'RESTful API and intuitive dashboard for seamless integration',
-      icon: <ApiOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    },
-    {
-      title: 'Real-Time Orchestration',
-      description: 'Dynamic route adjustments based on real-time conditions',
-      icon: <DashboardOutlined style={{ fontSize: '24px', color: '#5EF1FF' }} />
-    }
-  ]
-
-  const testimonials = [
-    {
-      quote: "Q-Router transformed our delivery operations. We've seen a 23% reduction in fuel costs and our customers are happier than ever.",
-      author: "Sarah Chen",
-      company: "LogiTech Solutions",
-      role: "VP of Operations"
-    },
-    {
-      quote: "The quantum optimization is game-changing. Routes that took hours to plan now take minutes, and they're significantly more efficient.",
-      author: "Marcus Rodriguez",
-      company: "Swift Delivery Co.",
-      role: "CTO"
-    },
-    {
-      quote: "Implementation was seamless and the ROI was immediate. Q-Router pays for itself within the first month.",
-      author: "Emily Watson",
-      company: "Metro Logistics",
-      role: "CEO"
-    }
-  ]
-
   return (
     <Layout style={{ background: 'transparent' }}>
       <Content>
-        {/* Hero Section */}
         <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
           <NetworkAnimation />
           <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '0 24px' }}>
             <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
               <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-                <Title level={1} style={{ 
-                  fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-                  marginBottom: '24px',
-                  background: 'linear-gradient(135deg, #5EF1FF 0%, #A855F7 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
+                <Title level={1} className={styles.heroTitle}>
                 }}>
                   Q-Router™
                 </Title>
@@ -355,7 +314,7 @@ export default function Home() {
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF', marginBottom: '48px' }}>
                 Connect with your existing logistics ecosystem
               </Paragraph>
-              <Avatar.Group size="large" maxCount={8}>
+              <Avatar.Group size="large" max={{ count: 8 }}>
                 <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>SAP</Avatar>
                 <Avatar style={{ backgroundColor: '#A855F7', color: '#fff' }}>SF</Avatar>
                 <Avatar style={{ backgroundColor: '#5EF1FF', color: '#000' }}>WMS</Avatar>
@@ -415,27 +374,36 @@ export default function Home() {
                 Choose Your Plan
               </Title>
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Flexible pricing for businesses of all sizes
+                Select the plan that best suits your business needs
               </Paragraph>
-            </Col>
-          </Row>
-          <Row gutter={[32, 32]} justify="center">
-            <Col xs={24} lg={8}>
-              <Card className="quantum-card" style={{ textAlign: 'center', height: '100%' }}>
-                <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                  Pilot
-                </Title>
-                <Paragraph style={{ color: '#9CA3AF', marginBottom: '32px' }}>
-                  Perfect for testing and small operations
-                </Paragraph>
-                <Button type="primary" size="large" block>
-                  Contact Us
-                </Button>
-              </Card>
-            </Col>
-            <Col xs={24} lg={8}>
-              <Card className="quantum-card" style={{ textAlign: 'center', height: '100%', position: 'relative' }}>
-                <div style={{ 
+              <Row gutter={[16, 16]}>
+                {plans.map((plan, index) => (
+                  <Col key={index} xs={24} sm={12} lg={8}>
+                    <Card className="plan-card">
+                      <Title level={3} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
+                        {plan.title}
+                      </Title>
+                      <Statistic
+                        value={plan.price}
+                        valueStyle={{ color: '#5EF1FF', fontSize: '2rem' }}
+                        suffix="/month"
+                        style={{ marginBottom: '16px' }}
+                      />
+                      <ul style={{ listStyle: 'none', padding: 0, marginBottom: '24px' }}>
+                        {plan.features.map((feature, idx) => (
+                          <li key={idx} style={{ marginBottom: '8px', color: '#9CA3AF' }}>
+                            <CheckCircleOutlined style={{ color: '#5EF1FF', marginRight: '8px' }} />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button type="primary" size="large" style={{ backgroundColor: '#5EF1FF', borderColor: '#5EF1FF' }}>
+                        {plan.buttonText}
+                      </Button>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
                   position: 'absolute', 
                   top: '-12px', 
                   left: '50%', 
@@ -629,4 +597,3 @@ export default function Home() {
       </Footer>
     </Layout>
   )
-}
