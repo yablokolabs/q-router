@@ -1,5 +1,6 @@
 'use client'
 
+import styles from './Button.module.css';
 import { 
   Row, 
   Col, 
@@ -34,7 +35,7 @@ import {
   DownloadOutlined
 } from '@ant-design/icons';
 import NetworkAnimation from '@/components/NetworkAnimation'
-import styles from './page.module.css'
+import pageStyles from './page.module.css'
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -202,19 +203,7 @@ export default function Home() {
                             message.error('Failed to generate PDF');
                           }
                         }}
-                        style={{ 
-                          height: '56px', 
-                          padding: '0 32px', 
-                          fontSize: '18px',
-                          background: 'transparent',
-                          borderColor: '#5EF1FF',
-                          color: '#5EF1FF',
-                          ':hover': {
-                            borderColor: '#5EF1FF',
-                            color: '#5EF1FF',
-                            opacity: 0.8
-                          }
-                        }}
+                        className={styles.customButton}
                       >
                         Download One-Pager
                       </Button>

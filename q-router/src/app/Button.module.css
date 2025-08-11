@@ -1,0 +1,15 @@
+.customButton {
+  height: 56px;
+  padding: 0 32px;
+  font-size: 18px;
+  background: transparent;
+  border-color: #5EF1FF;
+  color: #5EF1FF;
+  transition: opacity 0.3s;
+}
+
+.customButton:hover {
+  border-color: #5EF1FF;
+  color: #5EF1FF;
+  opacity: 0.8;
+}
