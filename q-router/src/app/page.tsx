@@ -15,6 +15,7 @@ import {
   Divider,
   message,
 } from 'antd'
+import Analytics from '@/components/Analytics'
 import { generateQRouterPdf } from '@/utils/generatePdf';
 import BackToTop from '@/components/BackToTop';
 import {
@@ -50,9 +51,9 @@ const features = [
 ]
 
 export default function Home() {
-  const [form] = Form.useForm()
   return (
     <>
+      <Analytics />
       <BackToTop />
       <Layout style={{ background: 'transparent' }}>
         <Content>
