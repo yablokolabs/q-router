@@ -329,10 +329,13 @@ export default function Home() {
                   marginBottom: '16px'
                 }}>
                   <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
+                    display: 'grid', 
+                    gridTemplateColumns: '1fr 1fr',
                     gap: '32px',
-                    color: '#E5E7EB'
+                    color: '#E5E7EB',
+                    '@media (max-width: 992px)': {
+                      gridTemplateColumns: '1fr'
+                    }
                   }}>
                     <div style={{ 
                       display: 'flex', 
@@ -408,6 +411,34 @@ export default function Home() {
                       </div>
                       <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
                         Where: ROI is expressed as a percentage
+                      </div>
+                    </div>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Cost Per Action (CPA) Impact</div>
+                      <div style={{ 
+                        fontSize: '2rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center'
+                      }}>
+                        <span style={{ fontSize: '1.5rem' }}>CPA<sub>new</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>=</span>
+                        <span style={{ fontSize: '1.5rem' }}>C<sub>O</sub></span>
+                        <span style={{ fontSize: '1.5rem' }}>÷</span>
+                        <span style={{ fontSize: '1.5rem' }}>D</span>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF', textAlign: 'center' }}>
+                        Where: CPA<sub>new</sub> = New Cost Per Action,<br/>
+                        C<sub>O</sub> = Optimized Cost,<br/>
+                        D = Number of Deliveries
                       </div>
                     </div>
                   </div>
