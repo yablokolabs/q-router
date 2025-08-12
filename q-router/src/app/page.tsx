@@ -81,7 +81,7 @@ export default function Home() {
                     }}>
                       Quantum-powered route optimization with AI traffic prediction for faster, more cost-efficient deliveries.
                     </Paragraph>
-                    <Space size="large" wrap>
+                    <Space size="large" wrap style={{ justifyContent: 'center' }}>
                       <Button 
                         type="primary" 
                         size="large" 
@@ -130,7 +130,13 @@ export default function Home() {
                     <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
                       Traditional routing systems are inefficient, leading to:
                     </Paragraph>
-                    <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
+                    <ul style={{
+                      color: '#9CA3AF',
+                      fontSize: '16px',
+                      lineHeight: 1.8,
+                      paddingLeft: '10px',
+                      marginLeft: '10px'
+                    }}>
                       <li>30% longer delivery times</li>
                       <li>25% higher fuel costs</li>
                       <li>Poor customer satisfaction</li>
@@ -147,7 +153,13 @@ export default function Home() {
                     <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
                       Q-Router combines quantum computing with AI to deliver:
                     </Paragraph>
-                    <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
+                    <ul style={{
+                      color: '#9CA3AF',
+                      fontSize: '16px',
+                      lineHeight: 1.8,
+                      paddingLeft: '10px',
+                      marginLeft: '10px'
+                    }}>
                       <li>Exponentially faster optimization</li>
                       <li>Real-time traffic prediction</li>
                       <li>Dynamic route adjustments</li>
@@ -180,45 +192,7 @@ export default function Home() {
               </Row>
             </section>
 
-        {/* Problem & Solution */}
-        <section style={{ padding: '48px 24px' }}>
-          <Row gutter={[48, 48]} justify="center">
-            <Col xs={24} lg={10}>
-              <Card className="quantum-card" style={{ height: '100%' }}>
-                <Title level={3} style={{ color: '#FF6B6B', marginBottom: '24px' }}>
-                  The Problem
-                </Title>
-                <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
-                  Traditional routing systems are inefficient, leading to:
-                </Paragraph>
-                <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
-                  <li>30% longer delivery times</li>
-                  <li>25% higher fuel costs</li>
-                  <li>Poor customer satisfaction</li>
-                  <li>Manual planning bottlenecks</li>
-                  <li>Inability to adapt to real-time changes</li>
-                </ul>
-              </Card>
-            </Col>
-            <Col xs={24} lg={10}>
-              <Card className="quantum-card" style={{ height: '100%' }}>
-                <Title level={3} style={{ color: '#5EF1FF', marginBottom: '24px' }}>
-                  The Solution
-                </Title>
-                <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
-                  Q-Router combines quantum computing with AI to deliver:
-                </Paragraph>
-                <ul style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.8 }}>
-                  <li>Exponentially faster optimization</li>
-                  <li>Real-time traffic prediction</li>
-                  <li>Dynamic route adjustments</li>
-                  <li>Multi-constraint optimization</li>
-                  <li>Seamless API integration</li>
-                </ul>
-              </Card>
-            </Col>
-          </Row>
-        </section>
+
 
         {/* Features Grid */}
         <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
