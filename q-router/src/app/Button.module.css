@@ -13,3 +13,16 @@
   color: #5EF1FF;
   opacity: 0.8;
 }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floatingLogo {
+  margin: 0 auto 24px;
+  width: 100%;
+  max-width: 600px;
+  animation: float 6s ease-in-out infinite;
+}

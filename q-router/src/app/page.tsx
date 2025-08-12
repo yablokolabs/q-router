@@ -63,17 +63,29 @@ export default function Home() {
             <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '0 24px' }}>
               <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
                 <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-                    <Title level={1} className={styles.heroTitle}>
-                      Q-Router™
-                    </Title>
-                    <Title level={2} style={{ 
-                      color: '#E5E7EB', 
-                      fontWeight: 300, 
-                      marginBottom: '16px',
-                      fontSize: 'clamp(1.5rem, 3vw, 2.5rem)'
-                    }}>
-                      The Quantum Way to the Fastest Route
-                    </Title>
+                    <div className={styles.floatingLogo}>
+                      <img 
+                        src="/q-router-logo-cropped.svg" 
+                        alt="Q-Router" 
+                        width={600}
+                        height={159}
+                        style={{ 
+                          objectFit: 'contain',
+                          width: '100%',
+                          height: 'auto',
+                          display: 'block',
+                          margin: '0 auto'
+                        }}
+                      />
+                    </div>
+                    <style jsx>{`
+                      @keyframes float {
+                        0% { transform: translateY(0px); }
+                        50% { transform: translateY(-10px); }
+                        100% { transform: translateY(0px); }
+                      }
+                    `}</style>
+.
                     <Paragraph style={{ 
                       fontSize: '1.25rem', 
                       color: '#9CA3AF', 
