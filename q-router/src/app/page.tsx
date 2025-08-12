@@ -51,6 +51,7 @@ const features = [
 ]
 
 export default function Home() {
+  const [form] = Form.useForm()
   return (
     <>
       <Analytics />
