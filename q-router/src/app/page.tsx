@@ -1,46 +1,35 @@
 'use client'
 
 import styles from './Button.module.css';
-import { 
-  Row, 
-  Col, 
-  Button, 
-  Card, 
-  Statistic, 
-  Steps, 
-  Avatar, 
-  Carousel, 
-  Form, 
-  Input, 
+import {
+  Row,
+  Col,
+  Button,
+  Card,
+  Form,
+  Input,
   Select,
   Layout,
   Typography,
   Space,
   Divider,
-  message
+  message,
 } from 'antd'
-import { useState } from 'react';
 import { generateQRouterPdf } from '@/utils/generatePdf';
 import BackToTop from '@/components/BackToTop';
-import { 
-  RocketOutlined,
+import {
   ThunderboltOutlined,
   ApiOutlined,
   DashboardOutlined,
   CheckCircleOutlined,
-  LineChartOutlined,
   DollarOutlined,
-  ClockCircleOutlined,
   SendOutlined,
   DownloadOutlined
 } from '@ant-design/icons';
 import NetworkAnimation from '@/components/NetworkAnimation'
-import pageStyles from './page.module.css'
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
-
-const { TextArea } = Input
 
 const features = [
   {
@@ -60,91 +49,8 @@ const features = [
   }
 ]
 
-const testimonials = [
-  {
-    quote: "Q-Router transformed our delivery operations. We've seen a 25% reduction in fuel costs and our customers are happier than ever.",
-    author: "Sarah Johnson",
-    role: "VP of Operations",
-    company: "LogiCorp"
-  },
-  {
-    quote: "The quantum optimization is incredible. What used to take hours of planning now happens in seconds.",
-    author: "Michael Chen",
-    role: "Fleet Manager",
-    company: "FastTrack Delivery"
-  },
-  {
-    quote: "Integration was seamless and the ROI was immediate. Q-Router is a game-changer for logistics.",
-    author: "Emily Rodriguez",
-    role: "CTO",
-    company: "Supply Chain Solutions"
-  }
-]
-
-const plans = [
-  {
-    title: 'Starter',
-    price: '$99',
-    buttonText: 'Start Free Trial',
-    features: [
-      'Up to 100 deliveries/month',
-      'Basic route optimization',
-      'Email support',
-      'API access',
-      'Standard integrations'
-    ]
-  },
-  {
-    title: 'Growth',
-    price: '$299',
-    buttonText: 'Start Free Trial',
-    features: [
-      'Up to 1,000 deliveries/month',
-      'Quantum optimization',
-      'Real-time tracking',
-      'Priority support',
-      'Advanced analytics',
-      'Custom integrations'
-    ]
-  },
-  {
-    title: 'Enterprise',
-    price: 'Custom',
-    buttonText: 'Contact Sales',
-    features: [
-      'Unlimited deliveries',
-      'Full quantum suite',
-      'Dedicated support',
-      'Custom development',
-      'SLA guarantees',
-      'White-label options'
-    ]
-  }
-]
-
 export default function Home() {
   const [form] = Form.useForm()
-
-  const handleSubmit = async (values: any) => {
-    try {
-      const response = await fetch('/api/lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
-      
-      if (response.ok) {
-        form.resetFields()
-        // You could add a success message here
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    }
-  }
-
-  const onFinish = handleSubmit
   return (
     <>
       <BackToTop />
@@ -356,7 +262,7 @@ export default function Home() {
                 Pay Only for Results
               </Title>
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF', maxWidth: '800px', margin: '0 auto 32px' }}>
-                Q-Router's performance-based pricing means you only pay when we deliver real, measurable savings to your bottom line.
+                Q-Router&apos;s performance-based pricing means you only pay when we deliver real, measurable savings to your bottom line.
               </Paragraph>
               <Button 
                 type="primary" 
@@ -413,7 +319,7 @@ export default function Home() {
                   Measurable Results
                 </Title>
                 <Paragraph style={{ color: '#9CA3AF' }}>
-                  Clear, transparent reporting shows exactly how much you're saving with Q-Router's optimization.
+                  Clear, transparent reporting shows exactly how much you&apos;re saving with Q-Router&apos;s optimization.
                 </Paragraph>
               </Card>
             </Col>
@@ -568,6 +474,7 @@ export default function Home() {
                         throw new Error('Form submission failed');
                       }
                     } catch (error) {
+                      console.error('Form submission failed:', error);
                       message.error('Something went wrong. Please try again.');
                     }
                   }}

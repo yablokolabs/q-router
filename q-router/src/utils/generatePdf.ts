@@ -2,6 +2,7 @@ export const generateQRouterPdf = async () => {
   // Dynamically import jspdf on the client side only
   const { default: jsPDF } = await import('jspdf');
   const doc = new jsPDF();
+  const font = 'helvetica';
   
   // Set document properties
   doc.setProperties({
@@ -25,9 +26,9 @@ export const generateQRouterPdf = async () => {
   
   // Add content sections
   doc.setFontSize(14);
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('Overview', 15, 55);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('Q-Router is a quantum-enhanced route optimization platform built for industries where time, ', 15, 65);
   doc.text('cost, and precision define success. Using Quadratic Unconstrained Binary Optimization ', 15, 73);
   doc.text('(QUBO) models and AI-driven traffic prediction, Q-Router solves Vehicle Routing ', 15, 81);
@@ -37,9 +38,9 @@ export const generateQRouterPdf = async () => {
 
   // Add Why Q-Router is Different section
   doc.addPage();
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('Why Q-Router is Different', 15, 25);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('In today\'s ultra-competitive logistics space — from 10-minute grocery deliveries to ', 15, 35);
   doc.text('nationwide e-commerce — classical algorithms hit scaling limits when solving complex ', 15, 43);
   doc.text('Capacitated Vehicle Routing Problems (CVRP) or Multi-Trip VRP (MTVRP) with live traffic data.', 15, 51);
@@ -52,9 +53,9 @@ export const generateQRouterPdf = async () => {
 
   // Add Key Features section
   doc.addPage();
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('Key Features', 15, 25);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('• Real-Time Multi-Vehicle Optimization — Solve VRP, CVRP, and MTVRP dynamically.', 20, 35);
   doc.text('• Load Factor Maximization — Better space utilization reduces Cost per Drop.', 20, 45);
   doc.text('• SLA Compliance Boost — Ensure On-Time, In-Full (OTIF) deliveries.', 20, 55);
@@ -62,25 +63,25 @@ export const generateQRouterPdf = async () => {
   doc.text('• Data-Driven Decisions — Route Deviation Index and Stop Time Analysis for operational insight.', 20, 75);
 
   // Add ROI Formula section
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('The ROI Formula', 15, 95);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('Cost Savings (CS) = Baseline Cost (CB) – Optimized Cost (CO)', 20, 105);
   doc.text('Q-Router Fee = CS × 10%', 20, 115);
 
   // Add Who Can Benefit section
   doc.addPage();
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('Who Can Benefit', 15, 25);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('• Quick-Commerce — Zepto, Blinkit, Swiggy Instamart, BigBasket, Amazon Fresh', 20, 35);
   doc.text('• E-Commerce Logistics — Flipkart, Delhivery, Shadowfax', 20, 45);
   doc.text('• Field Services & B2B Deliveries — Pharma, industrial supplies, food distribution', 20, 55);
 
   // Add QUBO Advantage section
-  doc.setFont(undefined, 'bold');
+  doc.setFont(font, 'bold');
   doc.text('The QUBO Advantage', 15, 75);
-  doc.setFont(undefined, 'normal');
+  doc.setFont(font, 'normal');
   doc.text('Traditional solvers slow down when solving NP-hard logistics problems with dozens of ', 15, 85);
   doc.text('constraints (capacity, time windows, shift limits, etc.). QUBO translates these complex ', 15, 93);
   doc.text('constraints into a mathematical model that quantum and quantum-inspired processors ', 15, 101);
