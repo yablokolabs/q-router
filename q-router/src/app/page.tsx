@@ -330,12 +330,10 @@ export default function Home() {
                 }}>
                   <div style={{ 
                     display: 'grid', 
-                    gridTemplateColumns: '1fr 1fr',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                     gap: '32px',
                     color: '#E5E7EB',
-                    '@media (max-width: 992px)': {
-                      gridTemplateColumns: '1fr'
-                    }
+                    width: '100%'
                   }}>
                     <div style={{ 
                       display: 'flex', 
