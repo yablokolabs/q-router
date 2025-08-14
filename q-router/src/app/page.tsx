@@ -165,7 +165,7 @@ export default function Home() {
                       The Solution
                     </Title>
                     <Paragraph style={{ color: '#9CA3AF', fontSize: '16px', lineHeight: 1.6 }}>
-                      Q-Router combines quantum computing with AI to deliver:
+                      Q-Router™ combines quantum computing with AI to deliver:
                     </Paragraph>
                     <ul style={{
                       color: '#9CA3AF',
@@ -216,7 +216,7 @@ export default function Home() {
                 Quantum-Powered Features
               </Title>
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Advanced capabilities that set Q-Router apart from traditional routing solutions
+                Advanced capabilities that set Q-Router™ apart from traditional routing solutions
               </Paragraph>
             </Col>
           </Row>
@@ -250,7 +250,7 @@ export default function Home() {
                 Pay Only for Results
               </Title>
               <Paragraph style={{ fontSize: '18px', color: '#9CA3AF', maxWidth: '800px', margin: '0 auto 32px' }}>
-                Q-Router&apos;s performance-based pricing means you only pay when we deliver real, measurable savings to your bottom line.
+                Q-Router™&apos;s performance-based pricing means you only pay when we deliver real, measurable savings to your bottom line.
               </Paragraph>
               <Button 
                 type="primary" 
@@ -307,7 +307,7 @@ export default function Home() {
                   Measurable Results
                 </Title>
                 <Paragraph style={{ color: '#9CA3AF' }}>
-                  Clear, transparent reporting shows exactly how much you&apos;re saving with Q-Router&apos;s optimization.
+                  Clear, transparent reporting shows exactly how much you&apos;re saving with Q-Router™&apos;s optimization.
                 </Paragraph>
               </Card>
             </Col>
@@ -320,7 +320,7 @@ export default function Home() {
             <Col xs={24} lg={16}>
               <Card className="quantum-card">
                 <Title level={3} style={{ color: '#5EF1FF', textAlign: 'center', marginBottom: '32px' }}>
-                  Transparent Savings Calculation
+                  Quantum Optimization Metrics
                 </Title>
                 <div style={{ 
                   background: 'rgba(255, 255, 255, 0.03)', 
@@ -335,120 +335,128 @@ export default function Home() {
                     color: '#E5E7EB',
                     width: '100%'
                   }}>
+                    {/* Quantum Cost Function */}
                     <div style={{ 
                       display: 'flex', 
                       flexDirection: 'column', 
                       gap: '8px',
-                      alignItems: 'center'
+                      alignItems: 'center',
+                      textAlign: 'center'
                     }}>
-                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Cost Savings</div>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Quantum Cost Function</div>
                       <div style={{ 
-                        fontSize: '2rem',
+                        fontSize: '1.5rem',
                         lineHeight: '1.5',
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px'
+                        flexDirection: 'column',
+                        gap: '8px',
+                        alignItems: 'center'
                       }}>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>=</span>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>B</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>−</span>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>O</sub></span>
-                      </div>
-                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
-                        Where: C<sub>S</sub> = Cost Savings, C<sub>B</sub> = Baseline Cost, C<sub>O</sub> = Optimized Cost
-                      </div>
-                    </div>
-                    <div style={{ 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      gap: '8px',
-                      alignItems: 'center'
-                    }}>
-                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Q-Router Fee (10%)</div>
-                      <div style={{ 
-                        fontSize: '2rem',
-                        lineHeight: '1.5',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px'
-                      }}>
-                        <span style={{ fontSize: '1.5rem' }}>F</span>
-                        <span style={{ fontSize: '1.5rem' }}>=</span>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>×</span>
-                        <span style={{ fontSize: '1.5rem' }}>0.1</span>
-                      </div>
-                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
-                        Where: F = Q-Router Fee
-                      </div>
-                    </div>
-                    <div style={{ 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      gap: '8px',
-                      alignItems: 'center'
-                    }}>
-                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Your ROI</div>
-                      <div style={{ 
-                        fontSize: '2rem',
-                        lineHeight: '1.5',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px'
-                      }}>
-                        <span style={{ fontSize: '1.5rem' }}>ROI</span>
-                        <span style={{ fontSize: '1.5rem' }}>=</span>
-                        <span style={{ fontSize: '1.5rem' }}>(</span>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>S</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>÷</span>
-                        <span style={{ fontSize: '1.5rem' }}>F</span>
-                        <span style={{ fontSize: '1.5rem' }}>)</span>
-                        <span style={{ fontSize: '1.5rem' }}>×</span>
-                        <span style={{ fontSize: '1.5rem' }}>100</span>
-                      </div>
-                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF' }}>
-                        Where: ROI is expressed as a percentage
-                      </div>
-                    </div>
-                    <div style={{ 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      gap: '8px',
-                      alignItems: 'center'
-                    }}>
-                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Cost Per Action (CPA) Impact</div>
-                      <div style={{ 
-                        fontSize: '2rem',
-                        lineHeight: '1.5',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center'
-                      }}>
-                        <span style={{ fontSize: '1.5rem' }}>CPA<sub>new</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>=</span>
-                        <span style={{ fontSize: '1.5rem' }}>C<sub>O</sub></span>
-                        <span style={{ fontSize: '1.5rem' }}>÷</span>
-                        <span style={{ fontSize: '1.5rem' }}>D</span>
+                        <div>H(s) = A(s)H<sub>0</sub> + B(s)H<sub>1</sub></div>
+                        <div>H<sub>0</sub> = −∑<sub>i</sub>σ<sub>i</sub><sup>x</sup></div>
+                        <div>H<sub>1</sub> = ∑<sub>i</sub>h<sub>i</sub>σ<sub>i</sub><sup>z</sup> + ∑<sub>{"i<j"}</sub>J<sub>ij</sub>σ<sub>i</sub><sup>z</sup>σ<sub>j</sub><sup>z</sup></div>
                       </div>
                       <div style={{ fontSize: '0.875rem', color: '#9CA3AF', textAlign: 'center' }}>
-                        Where: CPA<sub>new</sub> = New Cost Per Action,<br/>
-                        C<sub>O</sub> = Optimized Cost,<br/>
-                        D = Number of Deliveries
+                        Where: H(s) = Total Hamiltonian<br/>
+                        H<sub>0</sub> = Driver Hamiltonian<br/>
+                        H<sub>1</sub> = Problem Hamiltonian<br/>
+                        A(s), B(s) = Annealing schedule functions
+                      </div>
+                    </div>
+
+                    {/* Optimization Problem */}
+                    <div style={{ 
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      gap: '8px'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Optimization Problem</div>
+                      <div style={{ 
+                        fontSize: '1.5rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                        alignItems: 'center'
+                      }}>
+                        <div>
+                          min<sub>x∈{0,1}</sub> ∑<sub>i,j</sub>c<sub>ij</sub>x<sub>ij</sub> 
+                          + λ<sub>1</sub>∑<sub>j</sub>(∑<sub>i</sub>x<sub>ij</sub> − 1)<sup>2</sup> 
+                          + λ<sub>2</sub>∑<sub>i</sub>(∑<sub>j</sub>x<sub>ij</sub> − 1)<sup>2</sup> 
+                          + λ<sub>3</sub>(capacity penalties)
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF', textAlign: 'center' }}>
+                        Where: c<sub>ij</sub> = Travel cost<br/>
+                        x<sub>ij</sub> = Binary decision variable<br/>
+                        λ<sub>k</sub> = Penalty strengths
+                      </div>
+                    </div>
+
+                    {/* Annealing Schedule */}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center',
+                      textAlign: 'center'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Annealing Schedule</div>
+                      <div style={{ 
+                        fontSize: '1.5rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                        alignItems: 'center'
+                      }}>
+                        <div>A(0) ≫ B(0),&nbsp; A(1) ≈ 0,&nbsp; B(1) ≫ 0</div>
+                        <div>s(t) = t/τ, &nbsp; t ∈ [0, τ]</div>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF', textAlign: 'center' }}>
+                        Where: s = Normalized time<br/>
+                        τ = Total annealing time
+                      </div>
+                    </div>
+
+                    {/* Performance */}
+                    <div style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '8px',
+                      alignItems: 'center',
+                      textAlign: 'center'
+                    }}>
+                      <div style={{ color: '#5EF1FF', fontSize: '1.25rem' }}>Performance</div>
+                      <div style={{ 
+                        fontSize: '1.5rem',
+                        lineHeight: '1.5',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                        alignItems: 'center'
+                      }}>
+                        <div>Q = (C<sub>c</sub> − C<sub>q</sub>)/C<sub>c</sub> × 100%</div>
+                        <div>T<sub>q</sub> ≈ O(√N/M) <span style={{fontSize: '0.8rem', color: '#9CA3AF'}}>(illustrative)</span></div>
+                      </div>
+                      <div style={{ fontSize: '0.875rem', color: '#9CA3AF', textAlign: 'center' }}>
+                        Where: Q = Relative improvement<br/>
+                        C<sub>c/q</sub> = Classical/Quantum cost<br/>
+                        N = Problem size, M = Qubits
                       </div>
                     </div>
                   </div>
                 </div>
                 <Paragraph style={{ 
                   textAlign: 'center', 
-                  fontSize: '16px', 
+                  fontSize: '1.6rem', 
                   color: '#5EF1FF',
                   fontStyle: 'italic',
                   marginBottom: 0
                 }}>
-                  We charge only if we save you money — your success drives our success.
+                  Classical computers can't solve this efficiently — quantum annealing explores massive solution spaces with physical parallelism.
                 </Paragraph>
               </Card>
             </Col>
@@ -556,7 +564,7 @@ export default function Home() {
                       block
                       icon={<SendOutlined />}
                     >
-                      Get Started with Q-Router
+                      Get Started with Q-Router™
                     </Button>
                   </Form.Item>
                 </Form>
