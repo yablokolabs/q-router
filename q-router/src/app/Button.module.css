@@ -8,6 +8,10 @@
   transition: opacity 0.3s;
 }
 
+.hideButton {
+  display: none !important;
+}
+
 .customButton:hover {
   border-color: #5EF1FF;
   color: #5EF1FF;

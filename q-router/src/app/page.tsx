@@ -112,7 +112,8 @@ export default function Home() {
                         Book a Demo
                       </Button>
                       <Button 
-                        size="large" 
+                        type="primary"
+                        size="large"
                         icon={<DownloadOutlined />}
                         onClick={async () => {
                           try {
@@ -123,7 +124,7 @@ export default function Home() {
                             message.error('Failed to generate PDF');
                           }
                         }}
-                        className={styles.customButton}
+                        className={`${styles.customButton} ${styles.hideButton}`}
                       >
                         Download One-Pager
                       </Button>
