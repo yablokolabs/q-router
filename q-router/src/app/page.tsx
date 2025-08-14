@@ -382,7 +382,7 @@ export default function Home() {
                         alignItems: 'center'
                       }}>
                         <div>
-                          min<sub>x∈{0,1}</sub> ∑<sub>i,j</sub>c<sub>ij</sub>x<sub>ij</sub>
+                          min<sub>x∈{"{0,1}"}</sub> ∑<sub>i,j</sub>c<sub>ij</sub>x<sub>ij</sub>
                           + λ<sub>1</sub>∑<sub>j</sub>(∑<sub>i</sub>x<sub>ij</sub> − 1)<sup>2</sup>
                           + λ<sub>2</sub>∑<sub>i</sub>(∑<sub>j</sub>x<sub>ij</sub> − 1)<sup>2</sup>
                           + λ<sub>3</sub>(capacity penalties)
