@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yablokolabs.github.io/q-router/sitemap.xml
