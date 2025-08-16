@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, App } from 'antd'
 import CustomCursor from '../components/CustomCursor';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -41,8 +41,10 @@ export default function RootLayout({
               },
             }}
           >
+            <App>
             {children}
             <CustomCursor />
+          </App>
           </ConfigProvider>
         </AntdRegistry>
       </body>

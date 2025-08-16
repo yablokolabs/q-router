@@ -13,7 +13,7 @@ import {
   Typography,
   Space,
   Divider,
-  message,
+  message, Modal,
 } from 'antd'
 import Analytics from '@/components/Analytics'
 import { generateQRouterPdf } from '@/utils/generatePdf';
@@ -52,10 +52,12 @@ const features = [
 
 export default function Home() {
   const [form] = Form.useForm()
+  const [modal, contextHolder] = Modal.useModal()
   return (
     <>
       <Analytics />
       <BackToTop />
+      {contextHolder}
       <Layout style={{ background: 'transparent' }}>
         <Content>
           <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
@@ -479,6 +481,7 @@ export default function Home() {
                   method="POST"
                   onFinish={async (values) => {
                     try {
+                      console.log('Starting form submission with values:', values);
                       const response = await fetch('https://formspree.io/f/myzplqly', {
                         method: 'POST',
                         headers: {
@@ -492,12 +495,17 @@ export default function Home() {
                           _gotcha: '' // This is a honeypot field for spam prevention
                         })
                       });
-                      
+                      console.log('Fetch response status:', response.status);
                       if (response.ok) {
-                        message.success('Thank you! We will be in touch soon.');
+                        console.log('Submission successful, showing modal');
+                        modal.success({
+                          title: 'Get Started with Q-Router™',
+                          content: 'Thank you! We will be in touch soon.',
+                          okText: 'OK',
+                        });
                         form.resetFields();
                       } else {
-                        throw new Error('Form submission failed');
+                        throw new Error('Form submission failed with status: ' + response.status);
                       }
                     } catch (error) {
                       console.error('Form submission failed:', error);
