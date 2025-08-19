@@ -641,7 +641,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 style={{ color: '#5EF1FF' }}
               >
-                Yabloko Labs Pvt. Ltd.
+                Yabloko Labs.
               </a>
               {' '}All rights reserved.
             </Text>
