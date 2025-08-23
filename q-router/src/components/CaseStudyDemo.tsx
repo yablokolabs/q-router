@@ -23,6 +23,7 @@ interface SimulationResult {
   quantumDistance: string;
   savingsPercent: number;
   estimatedSavings: number;
+  estimatedSavingsUSD: number;
   distanceSaved: string;
 }
 
@@ -45,12 +46,15 @@ export default function CaseStudyDemo() {
     const quantumDistance = greedyDistance * (1 - savingsPercent / 100);
     const fuelSavingsPerKm = 12; // ₹12 per km saved
     const estimatedSavings = Math.round((greedyDistance - quantumDistance) * fuelSavingsPerKm);
+    const usdConversionRate = 0.012; // Approximate INR to USD conversion (1 INR = 0.012 USD)
+    const estimatedSavingsUSD = Math.round(estimatedSavings * usdConversionRate);
     
     setResult({
       greedyDistance: greedyDistance.toFixed(1),
       quantumDistance: quantumDistance.toFixed(1),
       savingsPercent,
       estimatedSavings,
+      estimatedSavingsUSD,
       distanceSaved: (greedyDistance - quantumDistance).toFixed(1)
     });
     
@@ -231,8 +235,11 @@ export default function CaseStudyDemo() {
                 borderRadius: '8px', 
                 padding: '16px' 
               }}>
-                <div style={{ color: '#a855f7', fontSize: '28px', fontWeight: 'bold' }}>
+                <div style={{ color: '#a855f7', fontSize: '24px', fontWeight: 'bold', marginBottom: '4px' }}>
                   ₹{result.estimatedSavings.toLocaleString()}
+                </div>
+                <div style={{ color: '#a855f7', fontSize: '18px', fontWeight: 'bold' }}>
+                  ${result.estimatedSavingsUSD.toLocaleString()}
                 </div>
                 <div style={{ color: '#9CA3AF', fontSize: '14px' }}>Daily Fuel Savings</div>
               </div>
@@ -253,7 +260,7 @@ export default function CaseStudyDemo() {
               fontWeight: 600, 
               marginBottom: '8px' 
             }}>
-              ✅ Estimated Monthly Savings: ₹{(result.estimatedSavings * 30).toLocaleString()}
+              ✅ Estimated Monthly Savings: ₹{(result.estimatedSavings * 30).toLocaleString()} / ${(result.estimatedSavingsUSD * 30).toLocaleString()}
             </Paragraph>
             <Paragraph style={{ color: '#9CA3AF', marginBottom: 0 }}>
               *Based on quantum annealing optimization vs traditional greedy algorithms
