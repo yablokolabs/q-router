@@ -25,9 +25,11 @@ import {
   CheckCircleOutlined,
   DollarOutlined,
   SendOutlined,
-  DownloadOutlined
+  DownloadOutlined,
+  BarChartOutlined
 } from '@ant-design/icons';
 import NetworkAnimation from '@/components/NetworkAnimation'
+import CaseStudyDemo from '@/components/CaseStudyDemo'
 
 const { Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -313,6 +315,67 @@ export default function Home() {
                   Clear, transparent reporting shows exactly how much you&apos;re saving with Q-Router™&apos;s optimization.
                 </Paragraph>
               </Card>
+            </Col>
+          </Row>
+        </section>
+
+        {/* Case Study Interactive Demo */}
+        <section style={{ padding: '80px 24px' }}>
+          <Row justify="center">
+            <Col xs={24} lg={20}>
+              <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                <Title level={2} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
+                  🚚 Case Study: See Your Savings with Q-Router™
+                </Title>
+                <Paragraph style={{ 
+                  fontSize: '18px', 
+                  color: '#9CA3AF',
+                  maxWidth: '800px',
+                  margin: '0 auto'
+                }}>
+                  Enter your fleet size and daily order volume to estimate how much Q-Router™
+                  can save you in mileage, fuel costs, and delivery efficiency.
+                </Paragraph>
+              </div>
+              
+              <CaseStudyDemo />
+              
+              {/* Feature Highlights */}
+              <Row gutter={[32, 32]} justify="center" style={{ marginTop: '64px' }}>
+                <Col xs={24} md={8}>
+                  <div style={{ textAlign: 'center' }}>
+                    <DollarOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF', marginBottom: '16px' }} />
+                    <Title level={4} style={{ color: '#E5E7EB', marginBottom: '12px' }}>
+                      Fuel Cost Reduction
+                    </Title>
+                    <Paragraph style={{ color: '#9CA3AF' }}>
+                      Lower mileage directly translates into reduced fuel spend and carbon footprint.
+                    </Paragraph>
+                  </div>
+                </Col>
+                <Col xs={24} md={8}>
+                  <div style={{ textAlign: 'center' }}>
+                    <BarChartOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF', marginBottom: '16px' }} />
+                    <Title level={4} style={{ color: '#E5E7EB', marginBottom: '12px' }}>
+                      Scalable Optimization
+                    </Title>
+                    <Paragraph style={{ color: '#9CA3AF' }}>
+                      Handles 100s–1000s of orders in a single batch run with quantum efficiency.
+                    </Paragraph>
+                  </div>
+                </Col>
+                <Col xs={24} md={8}>
+                  <div style={{ textAlign: 'center' }}>
+                    <CheckCircleOutlined style={{ fontSize: '2.5rem', color: '#5EF1FF', marginBottom: '16px' }} />
+                    <Title level={4} style={{ color: '#E5E7EB', marginBottom: '12px' }}>
+                      Operational Reliability
+                    </Title>
+                    <Paragraph style={{ color: '#9CA3AF' }}>
+                      Balanced assignments mean faster deliveries and fewer SLA breaches.
+                    </Paragraph>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </section>
