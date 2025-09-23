@@ -192,17 +192,27 @@ export default function Home() {
 
             {/* Features Grid */}
             <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
+              <Row justify="center" style={{ marginBottom: '48px' }}>
+                <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
+                  <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
+                    Quantum-Powered Features
+                  </Title>
+                  <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
+                    Advanced capabilities that set Q-Router™ apart from traditional routing solutions
+                  </Paragraph>
+                </Col>
+              </Row>
               <Row gutter={[32, 32]} justify="center">
                 {features.map((feature, index) => (
-                  <Col key={index} xs={24} md={12} lg={8}>
-                    <Card className="quantum-card" style={{ height: '100%' }}>
-                      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <Col xs={24} sm={12} lg={8} key={index}>
+                    <Card className="quantum-card" style={{ height: '100%', textAlign: 'center' }}>
+                      <div style={{ marginBottom: '16px' }}>
                         {feature.icon}
                       </div>
-                      <Title level={3} style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+                      <Title level={4} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
                         {feature.title}
                       </Title>
-                      <Paragraph style={{ color: '#9CA3AF', textAlign: 'center' }}>
+                      <Paragraph style={{ color: '#9CA3AF' }}>
                         {feature.description}
                       </Paragraph>
                     </Card>
@@ -210,39 +220,6 @@ export default function Home() {
                 ))}
               </Row>
             </section>
-
-
-
-        {/* Features Grid */}
-        <section style={{ padding: '48px 24px', background: 'rgba(5, 6, 10, 0.5)' }}>
-          <Row justify="center" style={{ marginBottom: '48px' }}>
-            <Col xs={24} lg={16} style={{ textAlign: 'center' }}>
-              <Title level={2} style={{ color: '#E5E7EB', marginBottom: '24px' }}>
-                Quantum-Powered Features
-              </Title>
-              <Paragraph style={{ fontSize: '18px', color: '#9CA3AF' }}>
-                Advanced capabilities that set Q-Router™ apart from traditional routing solutions
-              </Paragraph>
-            </Col>
-          </Row>
-          <Row gutter={[32, 32]} justify="center">
-            {features.map((feature, index) => (
-              <Col xs={24} sm={12} lg={8} key={index}>
-                <Card className="quantum-card" style={{ height: '100%', textAlign: 'center' }}>
-                  <div style={{ marginBottom: '16px' }}>
-                    {feature.icon}
-                  </div>
-                  <Title level={4} style={{ color: '#E5E7EB', marginBottom: '16px' }}>
-                    {feature.title}
-                  </Title>
-                  <Paragraph style={{ color: '#9CA3AF' }}>
-                    {feature.description}
-                  </Paragraph>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </section>
 
         {/* Pricing Pitch */}
         <section style={{ padding: '48px 24px' }}>
