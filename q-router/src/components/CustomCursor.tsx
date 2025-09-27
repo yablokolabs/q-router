@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import './CustomCursor.css';
+import React, { useEffect, useState } from "react";
+import "./CustomCursor.css";
 
 const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -11,8 +11,8 @@ const CustomCursor: React.FC = () => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
-    document.addEventListener('mousemove', updatePosition);
-    return () => document.removeEventListener('mousemove', updatePosition);
+    document.addEventListener("mousemove", updatePosition);
+    return () => document.removeEventListener("mousemove", updatePosition);
   }, []);
 
   return (

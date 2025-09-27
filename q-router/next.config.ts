@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-const basePath = isGithubActions ? '/q-router' : '';
-const assetPrefix = isGithubActions ? '/q-router/' : '/';
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const basePath = isGithubActions ? "/q-router" : "";
+const assetPrefix = isGithubActions ? "/q-router/" : "/";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
   basePath: basePath,
   assetPrefix: assetPrefix,
   images: {

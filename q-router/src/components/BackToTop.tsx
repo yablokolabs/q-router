@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { UpOutlined } from '@ant-design/icons';
+import { UpOutlined } from "@ant-design/icons";
+import { useEffect, useState } from "react";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,25 +17,26 @@ const BackToTop = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
     return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+      window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
 
   return (
-    <button 
-      onClick={scrollToTop} 
-      className={`back-to-top ${isVisible ? 'visible' : ''}`}
+    <button
+      onClick={scrollToTop}
+      className={`back-to-top ${isVisible ? "visible" : ""}`}
       aria-label="Back to top"
     >
-      <UpOutlined style={{ fontSize: '20px' }} />
-      <style jsx global>{`
+      <UpOutlined style={{ fontSize: "20px" }} />
+      <style jsx global>
+        {`
         .back-to-top {
           position: fixed;
           bottom: 30px;
@@ -72,7 +73,8 @@ const BackToTop = () => {
         .back-to-top:active {
           transform: translateY(1px);
         }
-      `}</style>
+      `}
+      </style>
     </button>
   );
 };
