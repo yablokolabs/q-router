@@ -718,7 +718,7 @@ export default function Home() {
           <Row justify="center" align="middle">
             <Col>
               <Text style={{ color: "#9CA3AF", textAlign: "center" }}>
-                © 2025{" "}
+                © 2025-2026{" "}
                 <a
                   href="https://yablokolabs.com/"
                   target="_blank"

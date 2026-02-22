@@ -107,7 +107,7 @@ export const generateQRouterPdf = async () => {
 
   // Add copyright notice with link
   doc.setTextColor(0, 0, 255); // Blue for link
-  doc.textWithLink("© 2025 Yabloko Labs", 15, 157, { url: "https://yablokolabs.com/" });
+  doc.textWithLink("© 2025-2026 Yabloko Labs", 15, 157, { url: "https://yablokolabs.com/" });
   doc.setTextColor(100, 100, 100); // Reset to footer color
 
   // Save the PDF
